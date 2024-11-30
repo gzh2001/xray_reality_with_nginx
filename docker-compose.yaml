@@ -15,9 +15,9 @@ services:
     build: ./nginx
     restart: unless-stopped
     ports:
-      - "20601:20601"
+      - "20601:443"
     volumes:
-      - ./templates:/etc/nginx/templates
+      - ./nginx/templates:/etc/nginx/templates
       - ./data:/var/www
     environment:
         # 填解析到服务器的域名

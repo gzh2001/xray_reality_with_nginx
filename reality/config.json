@@ -56,7 +56,7 @@
         "security": "reality",
         "realitySettings": {
           "show": true,
-          "dest": "xx",
+          "target": "xx",
           "xver": 0,
           "maxTimeDiff": 0,
           "minClientVer": "",
@@ -73,7 +73,8 @@
         "enabled": true,
         "destOverride": [
           "http",
-          "tls"
+          "tls",
+          "quic"
         ]
       }
     }
@@ -86,23 +87,6 @@
     {
       "protocol": "blackhole",
       "tag": "blocked"
-    },
-    {
-      "protocol": "wireguard",
-      "settings": {
-        "secretKey": "",
-        "address": [
-          "172.16.0.2/32",
-          "2606:4700:110:8949:fed8:2642:a640:c8e1/128"
-        ],
-        "peers": [
-          {
-            "publicKey": "",
-            "endpoint": "engage.cloudflareclient.com:2408"
-          }
-        ]
-      },
-      "tag": "wireguard-1"
     }
   ],
   "routing": {
@@ -143,14 +127,10 @@
         "domain": [
           "geosite:cn"
         ],
-        "outboundTag": "wireguard-1"
-      },
-      {
-        "type": "field",
         "ip": [
           "geoip:cn"
         ],
-        "outboundTag": "wireguard-1"
+        "outboundTag": "blocked"
       }
     ]
   }
