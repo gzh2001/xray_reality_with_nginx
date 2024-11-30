@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  xray-reality:
+    build: ./reality
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    environment:
+      - EXTERNAL_PORT=443
+      # 填解析到服务器的域名
+      - SERVERNAMES=
+      - DEST=web:20601
+  web:
+    build: ./nginx
+    restart: unless-stopped
+    ports:
+      - "20601:20601"
+    volumes:
+      - ./templates:/etc/nginx/templates
+      - ./data:/var/www
+    environment:
+        # 填解析到服务器的域名
+      - NGINX_HOST=
